@@ -13,7 +13,10 @@
 
 [string]$guest_user_prefix="tbd"
 #Source variables from variable file (this one is in .gitignore) 
-. .\variables.ps1
+if (Test-Path .\variables.ps1) {
+    . .\variables.ps1
+}
+
 
 [int]$guest_accounts=Invoke-GetInput -Question "Wie viele Gastaccounts sollen erstellt werden (max. 100)" -Suggestion "10"
 while ($guest_accounts -gt 100) {
